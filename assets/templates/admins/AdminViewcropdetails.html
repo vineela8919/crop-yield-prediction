@@ -1,0 +1,62 @@
+{% extends 'adminbase.html' %}
+{% load static %}
+
+{% block contents %}
+
+<div class="tm-welcome-container text-center text-white">
+                <div class="tm-welcome-container-inner">
+                    <!--<h1><p class="tm-welcome-text mb-1 text-white">Crop Yield Prediction using Machine Learning Techniques</p></h1>-->
+                     <h2>Admin View crop yield details Page</h2>
+                     <center>
+ <table class="table table-bordered bg-light text-dark">
+
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Login ID</th>
+        <th>Email</th>
+        <th>cropdetails</th>
+        <th>yields</th>
+        <th>status</th>
+        <th>Activate</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+                                            <tr style="color:black">
+                                                <td>{{forloop.counter}}</td>
+                                                <td>{{i.loginid}}</td>
+                                                <td>{{i.email}}</td>
+                                                <td>{{i.cropdetails}}</td>
+                                                <td>{{i.yields}}</td>
+                                                <td>{{i.status}}</td>
+
+                                                {% if i.status == 'waiting' %}
+                                                <td style="color:skyblue"><a href="/sendcrop?id={{i.id}}" style="color:blue" >send</a></td>
+                                            {% else %}
+                                                <td> Sent</td>
+                                        {% endif %}
+                                    </tr>
+                                     {% endfor %}
+    </tbody> </table></center>
+
+
+							</p>
+
+
+                </div>
+            </div>
+
+            <div id="tm-video-container">
+                <video autoplay muted loop id="tm-video">
+                    <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
+                        <source src="{% static 'video/wheat-field.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+
+            <i id="tm-video-control-button" class="fas fa-pause"></i>
+        </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+
+<div class="tm-welcome-container text-center text-white">
+                <div class="tm-welcome-container-inner">
+<form method="POST" action="{%url 'UserRegisterAction'%}" >
+                {% csrf_token %}<center>
+<h2>User Register Form</h2>
+                <table>
+                    <br>
+                    <tr><td>Customer Name</td><td>{{form.name}}</td></tr>
+                    <tr><td>Login ID</td><td>{{form.loginid}}</td></tr>
+                    <tr><td>Password</td><td>{{form.password}}</td></tr>
+                    <tr><td>Mobile</td><td>{{form.mobile}}</td></tr>
+                    <tr><td>email</td><td>{{form.email}}</td></tr>
+                    <tr><td>Locality</td><td>{{form.locality}}</td></tr>
+                    <tr><td>Address</td><td>{{form.address}}</td></tr>
+                    <tr><td>City</td><td>{{form.city}}</td></tr>
+                    <tr><td>State</td><td>{{form.state}}</td></tr>
+                    <tr><td></td><td>{{form.status}}</td></tr>
+
+                    <tr><td><button  class="btn btn-primary my-2 my-sm-0" type="submit" style = "margin-left:20%;">Register</button></td></tr>
+
+                        {% if messages %}
+                               {% for message in messages %}
+                                  <font color='GREEN'> {{ message }}</font>
+                               {% endfor %}
+                           {% endif %}
+
+                </table></center>
+
+            </form>
+
+                    </p>
+    </center>
+
+                </div>
+            </div>
+
+            <div id="tm-video-container">
+                <video autoplay muted loop id="tm-video">
+                    <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
+                        <source src="{% static 'video/wheat-field.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+
+            <i id="tm-video-control-button" class="fas fa-pause"></i>
+        </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contents %}
+
+<div class="tm-welcome-container text-center text-white">
+                <div class="tm-welcome-container-inner">
+<form action="{%url 'AdminLoginCheck'%}" method="POST">
+                                 {% csrf_token %}<center>
+                                <table><tr><td style="color:black">
+                                <input  type="text" name="loginname" placeholder="ADMIN" ><br/><br/>
+<!--                                    <input type="email" name="email" class="form-control"  placeholder="Email">-->
+                                 <input  type="password" name="pswd" placeholder="PASSWORD" ><br/><br/>
+                                    </td></tr></table> <input type="submit" style="color:#FF4500" value="submit">&nbsp;&nbsp;
+
+
+                            </center></form>
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <font color='darkred'> {{ message }}</font>
+                                {% endfor %}
+                            {% endif %}
+
+                </div>
+            </div>
+
+            <div id="tm-video-container">
+                <video autoplay muted loop id="tm-video">
+                    <!-- <source src="video/sunset-timelapse-video.mp4" type="video/mp4"> -->
+                        <source src="{% static 'video/wheat-field.mp4' %}" type="video/mp4">
+                </video>
+            </div>
+
+            <i id="tm-video-control-button" class="fas fa-pause"></i>
+        </div>
+
+
+
+{% endblock %}
